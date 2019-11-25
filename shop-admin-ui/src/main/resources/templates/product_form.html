@@ -2,24 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="admin/fragments/header :: head"></head>
+<head th:replace="fragments/header :: head"></head>
 
 <body class="bg-light">
 
 <th:block th:if="${error}">
-    <div th:replace="admin/fragments/header :: alert"></div>
+    <div th:replace="fragments/header :: alert"></div>
 </th:block>
 
-<div th:replace="admin/fragments/header :: header"></div>
+<div th:replace="fragments/header :: header"></div>
 
 <div class="d-flex">
-    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
         <h2 class="mb-4" th:if="${edit}">Edit product</h2>
         <h2 class="mb-4" th:if="${create}">Create product</h2>
 
-        <form th:object="${product}" method="post" th:action="@{/admin/product}" enctype="multipart/form-data">
+        <form th:object="${product}" method="post" th:action="@{/product}" enctype="multipart/form-data">
             <div class="card mb-4">
                 <div class="card-body">
                     <input th:type="hidden" th:field="*{id}">
@@ -42,12 +42,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="roles">Categories</label>
-                        <select multiple class="form-control" id="roles" th:field="*{categories}" required>
+                        <label for="category">Categories</label>
+                        <select class="form-control" id="category" th:field="*{category}" required>
                             <option th:each="cat : ${categories}"
                                     th:text="${cat.name}"
-                                    th:value="${cat.id}"
-                                    th:selected="${product.categories?.contains(cat)}"></option>
+                                    th:value="${cat.id}"></option>
                         </select>
                     </div>
 
@@ -77,7 +76,7 @@
     </div>
 </div>
 
-<script th:replace="admin/fragments/footer :: scripts"></script>
+<script th:replace="fragments/footer :: scripts"></script>
 
 </body>
 </html>

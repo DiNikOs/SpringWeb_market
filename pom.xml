@@ -10,6 +10,7 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <packaging>pom</packaging>
 
     <properties>
@@ -20,11 +21,10 @@
     <artifactId>geek-jewellery-shop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <modules>
-        <module>shop-ui</module>
-        <module>shop-admin-ui</module>
         <module>shop-database</module>
+        <module>shop-admin-ui</module>
+        <module>shop-ui</module>
     </modules>
 
 </project>

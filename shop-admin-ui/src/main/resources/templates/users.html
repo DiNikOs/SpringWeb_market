@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="admin/fragments/header :: head"></head>
+<head th:replace="fragments/header :: head"></head>
 
 <body class="bg-light">
 
-<div th:replace="admin/fragments/header :: header"></div>
+<div th:replace="fragments/header :: header"></div>
 
 <div class="d-flex">
-    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
         <h2 class="mb-4">User list</h2>
@@ -17,7 +17,7 @@
         <div class="card mb-4">
 
             <div class="card-body">
-                <form class="form-group" th:action="@{/admin/user/create}">
+                <form class="form-group" th:action="@{/user/create}">
                     <button type="submit" class="btn btn-primary">Create new</button>
                 </form>
 
@@ -35,7 +35,7 @@
                     <tbody>
                     <tr th:each="usr : ${users}">
                         <td th:text="${usr.id}"></td>
-                        <td th:text="${usr.userName}">Admin</td>
+                        <td th:text="${usr.username}">Admin</td>
                         <td th:text="${usr.firstName}"></td>
                         <td th:text="${usr.lastName}"></td>
                         <td th:text="${usr.email}"></td>
@@ -52,8 +52,8 @@
     </div>
 </div>
 
-<script th:replace="admin/fragments/footer :: scripts"></script>
-<script th:src="@{/admin/js/datatables.min.js}"></script>
+<script th:replace="fragments/footer :: scripts"></script>
+<script th:src="@{/js/datatables.min.js}"></script>
 <script>
     $(document).ready(function () {
         $('#users').DataTable();
