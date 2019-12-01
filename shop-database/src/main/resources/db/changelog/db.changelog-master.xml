@@ -26,5 +26,4 @@
         <tagDatabase tag="v.2.0"/>
     </changeSet>
 
-    <includeAll relativeToChangelogFile="true" path="patches"/>
 </databaseChangeLog>

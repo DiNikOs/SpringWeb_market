@@ -1,11 +1,12 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "pictures")
-public class Picture {
+public class Picture implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class Picture {
     @Column(name = "content_type", nullable = false)
     private String contentType;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, optional = false, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.LAZY, cascade= CascadeType.ALL, optional = false, orphanRemoval = true)
     @JoinColumn(name="picture_data_id")
     private PictureData pictureData;
 

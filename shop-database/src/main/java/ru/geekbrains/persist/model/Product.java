@@ -1,13 +1,13 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,24 +21,19 @@ public class Product {
     private BigDecimal price;
 
     @ManyToOne(optional = false)
-    private Brand brand;
-
-    @ManyToOne(optional = false)
     private Category category;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @ManyToOne(optional = false)
+    private Brand brand;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
     @JoinTable(name = "products_pictures",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "picture_id"))
     private List<Picture> pictures;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "products_categories",
-//            joinColumns = @JoinColumn(name = "product_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    private Set<Category> categories;
-
     public Product() {
+
     }
 
     public Long getId() {
@@ -72,14 +67,6 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
-
-//    public Set<Category> getCategories() {
-//        return categories;
-//    }
-//
-//    public void setCategories(Set<Category> categories) {
-//        this.categories = categories;
-//    }
 
     public Brand getBrand() {
         return brand;

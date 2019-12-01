@@ -1,12 +1,13 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +15,7 @@ public class User {
     private Long id;
 
     @Column(name = "username", unique = true, nullable = false)
-    private String userName;
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -38,13 +39,13 @@ public class User {
         this.roles = new HashSet<>();
     }
 
-    public User(String userName, String password, String firstName, String lastName, String email) {
-        this(userName, password, firstName, lastName, email, new HashSet<>());
+    public User(String username, String password, String firstName, String lastName, String email) {
+        this(username, password, firstName, lastName, email, new HashSet<>());
     }
 
-    public User(String userName, String password, String firstName, String lastName, String email,
+    public User(String username, String password, String firstName, String lastName, String email,
                 Set<Role> roles) {
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,11 +62,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -110,7 +111,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
+        return "User{" + "id=" + id + ", userName='" + username + '\'' + ", password='" + "*********" + '\''
                 + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
                 + ", roles=" + roles + '}';
     }

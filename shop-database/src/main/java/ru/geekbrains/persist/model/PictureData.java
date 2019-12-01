@@ -1,10 +1,12 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
 @Table(name = "pictures_data")
-public class PictureData {
+public class PictureData implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +14,7 @@ public class PictureData {
     private Long id;
 
     @Lob
-    @Column(name = "data", nullable = false, columnDefinition="MEDIUMBLOB")
+    @Column(name = "data", nullable = false)
     private byte[] data;
 
     public PictureData() {

@@ -1,12 +1,13 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "categories")
-public class Category {
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +17,13 @@ public class Category {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-//    @ManyToMany(mappedBy = "categories")
-    //private List<Product> products;
-
     @OneToMany(
             mappedBy = "category",
             cascade = CascadeType.ALL)
     private List<Product> products;
 
     public Category() {
+
     }
 
     public Long getId() {
