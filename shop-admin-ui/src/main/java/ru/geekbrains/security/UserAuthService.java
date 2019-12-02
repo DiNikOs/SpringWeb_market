@@ -26,9 +26,9 @@ public class UserAuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findUserByUsername(username)
                 .map(user -> new org.springframework.security.core.userdetails.User(
-                        user.getUserName(),
+                        user.getUsername(),
                         user.getPassword(),
-                        Collections.singletonList(new SimpleGrantedAuthority("USER"))
+                        Collections.singletonList(new SimpleGrantedAuthority("ADMIN"))
                 ))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }

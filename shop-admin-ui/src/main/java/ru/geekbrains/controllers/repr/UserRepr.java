@@ -32,7 +32,7 @@ public class UserRepr {
 
     public UserRepr(User user) {
         this.id = user.getId();
-        this.username = user.getUserName();
+        this.username = user.getUsername();
         this.password = user.getPassword();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();

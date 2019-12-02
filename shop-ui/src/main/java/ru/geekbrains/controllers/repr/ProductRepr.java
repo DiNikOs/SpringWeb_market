@@ -26,9 +26,9 @@ public class ProductRepr {
 
     private Brand brand;
 
-//    private List<Picture> pictures;
+    private List<Picture> pictures;
 
-    private List<Long> pictureIds;
+//    private List<Long> pictureIds;
 
     private MultipartFile[] newPictures;
 
@@ -41,9 +41,10 @@ public class ProductRepr {
         this.price = product.getPrice();
 //        this.categories = product.getCategories();
         this.brand = product.getBrand();
-        this.pictureIds = product.getPictures().stream()
-                .map(Picture::getId)
-                .collect(Collectors.toList());
+        this.pictures = product.getPictures();
+//        this.pictureIds = product.getPictures().stream()
+//                .map(Picture::getId)
+//                .collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -101,21 +102,21 @@ public class ProductRepr {
         this.brand = brand;
     }
 
-//    public List<Picture> getPictures() {
-//        return pictures;
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+//    public List<Long> getPictures() {
+//        return pictureIds;
 //    }
 //
-//    public void setPictures(List<Picture> pictures) {
-//        this.pictures = pictures;
+//    public void setPictures(List<Long> pictures) {
+//        this.pictureIds = pictures;
 //    }
-
-    public List<Long> getPictures() {
-        return pictureIds;
-    }
-
-    public void setPictures(List<Long> pictures) {
-        this.pictureIds = pictures;
-    }
 
     public MultipartFile[] getNewPictures() {
         return newPictures;

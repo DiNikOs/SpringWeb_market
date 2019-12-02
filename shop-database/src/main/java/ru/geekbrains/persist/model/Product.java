@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -31,6 +32,12 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "picture_id"))
     private List<Picture> pictures;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "products_categories",
+//            joinColumns = @JoinColumn(name = "product_id"),
+//            inverseJoinColumns = @JoinColumn(name = "category_id"))
+//    private Set<Category> categories;
 
     public Product() {
 
@@ -67,6 +74,14 @@ public class Product implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+//    public Set<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(Set<Category> categories) {
+//        this.categories = categories;
+//    }
 
     public Brand getBrand() {
         return brand;

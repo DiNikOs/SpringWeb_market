@@ -1,5 +1,6 @@
 INSERT INTO `users` (`username`, `password`)
 VALUE   ('admin', '$2a$10$uedJ6jkBS08x5mxZY6gV6.LAKSd202CiVutxz5VDq3TIyj9alkmIq'),
+        ('admin0', '$2a$10$JXGyGx3v/JI/FoaLh76SiuerIvAg/ZHVBEiNYTTNj4/IrTQUUVtF6'),
         ('guest', '$2a$10$uedJ6jkBS08x5mxZY6gV6.LAKSd202CiVutxz5VDq3TIyj9alkmIq');
 GO
 

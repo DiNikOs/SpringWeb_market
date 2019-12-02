@@ -38,7 +38,7 @@ public class SystemUser {
 
     public SystemUser(User user) {
         this.id = user.getId();
-        this.userName = user.getUserName();
+        this.userName = user.getUsername();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();

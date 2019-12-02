@@ -43,7 +43,7 @@ public class UserServiceJpaImpl implements UserService {
     @Transactional
     public SystemUser findByUserName(String username) {
         User user = userRepository.findOneByUserName(username);
-        return new SystemUser(user.getUserName(), user.getPassword(),
+        return new SystemUser(user.getUsername(), user.getPassword(),
                 user.getFirstName(), user.getLastName(), user.getEmail(), user.getRoles());
     }
 
@@ -53,7 +53,7 @@ public class UserServiceJpaImpl implements UserService {
         User user = systemUser.getId() != null ? userRepository
                 .findById(systemUser.getId())
                 .orElse(new User()) : new User();
-        user.setUserName(systemUser.getUserName());
+        user.setUsername(systemUser.getUserName());
         if (systemUser.getId() == null || (systemUser.getPassword() != null && !systemUser.getPassword().trim().isEmpty())) {
             user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
         }
