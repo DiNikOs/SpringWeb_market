@@ -1,5 +1,8 @@
 package ru.geekbrains.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Service;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.service.model.LineItem;
 
+import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +21,10 @@ import java.util.Map;
 @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CartServiceImpl implements CartService {
 
+    private static final long serialVersionUID = -9025621122549454991L;
+
+    private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
+
     private final ProductService productService;
 
     private Map<LineItem, Integer> lineItems;
@@ -25,6 +33,11 @@ public class CartServiceImpl implements CartService {
     public CartServiceImpl(ProductService productService) {
         this.productService = productService;
         this.lineItems = new HashMap<>();
+    }
+
+    @PostConstruct
+    public void post() {
+        logger.info("Session bean post construct");
     }
 
     @Override
@@ -55,6 +68,7 @@ public class CartServiceImpl implements CartService {
         return new ArrayList<>(lineItems.keySet());
     }
 
+    @JsonIgnore
     @Override
     public BigDecimal getSubTotal() {
         lineItems.forEach(LineItem::setQty);
@@ -69,7 +83,6 @@ public class CartServiceImpl implements CartService {
             lineItem.setProductRepr(productService.findById(lineItem.getProductId())
                     .orElseThrow(IllegalArgumentException::new));
         }
-
         lineItems.put(lineItem, lineItem.getQty());
     }
 }
