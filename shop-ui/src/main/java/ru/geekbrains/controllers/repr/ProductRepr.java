@@ -20,15 +20,19 @@ public class ProductRepr {
 
     private BigDecimal price;
 
+    private String categoryName;
+
+    private String brandName;
+
     private Category category;
 
-    private Set<Category> categories;
+//    private Set<Category> categories;
 
     private Brand brand;
 
-    private List<Picture> pictures;
+//    private List<Picture> pictures;
 
-//    private List<Long> pictureIds;
+    private List<Long> pictureIds;
 
     private MultipartFile[] newPictures;
 
@@ -39,12 +43,15 @@ public class ProductRepr {
         this.id = product.getId();
         this.name = product.getName();
         this.price = product.getPrice();
-//        this.categories = product.getCategories();
         this.brand = product.getBrand();
-        this.pictures = product.getPictures();
-//        this.pictureIds = product.getPictures().stream()
-//                .map(Picture::getId)
-//                .collect(Collectors.toList());
+//        this.pictures = product.getPictureIds();
+//        this.categories = product.getCategories();
+        this.category = product.getCategory();
+        this.categoryName = product.getCategory().getName();
+        this.brandName = product.getBrand().getName();
+        this.pictureIds = product.getPictures().stream()
+                .map(Picture::getId)
+                .collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -71,6 +78,14 @@ public class ProductRepr {
         this.price = price;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -79,20 +94,44 @@ public class ProductRepr {
         this.category = category;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
-    public String getCategoriesAsString() {
-        return getCategories()
-                .stream()
-                .map(Category::getName)
-                .collect(Collectors.joining(", "));
+    public List<Long> getPictureIds() {
+        return pictureIds;
     }
+
+    public void setPictureIds(List<Long> pictureIds) {
+        this.pictureIds = pictureIds;
+    }
+
+    public MultipartFile[] getNewPictures() {
+        return newPictures;
+    }
+
+    public void setNewPictures(MultipartFile[] newPictures) {
+        this.newPictures = newPictures;
+    }
+
+//    public Set<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(Set<Category> categories) {
+//        this.categories = categories;
+//    }
+
+//    public String getCategoriesAsString() {
+//        return getCategories()
+//                .stream()
+//                .map(Category::getName)
+//                .collect(Collectors.joining(", "));
+//    }
 
     public Brand getBrand() {
         return brand;
@@ -102,29 +141,13 @@ public class ProductRepr {
         this.brand = brand;
     }
 
-    public List<Picture> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(List<Picture> pictures) {
-        this.pictures = pictures;
-    }
-
-//    public List<Long> getPictures() {
-//        return pictureIds;
+//    public List<Picture> getPictureIds() {
+//        return pictures;
 //    }
 //
-//    public void setPictures(List<Long> pictures) {
-//        this.pictureIds = pictures;
+//    public void setPictureIds(List<Picture> pictures) {
+//        this.pictures = pictures;
 //    }
-
-    public MultipartFile[] getNewPictures() {
-        return newPictures;
-    }
-
-    public void setNewPictures(MultipartFile[] newPictures) {
-        this.newPictures = newPictures;
-    }
 
     @Override
     public boolean equals(Object o) {

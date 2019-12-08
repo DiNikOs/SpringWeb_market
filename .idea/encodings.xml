@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-admin-ui" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-database" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop-zuul-proxy" charset="UTF-8" />
   </component>
 </project>

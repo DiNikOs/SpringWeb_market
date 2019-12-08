@@ -16,5 +16,7 @@ public interface ProductService {
 
     void deleteById(Long id);
 
-//    void save(ProductRepr product) throws IOException;
+    List<List<ProductRepr>> findAllAndSplitProductsBy(int groupSize);
+
+    void save(ProductRepr product) throws IOException;
 }

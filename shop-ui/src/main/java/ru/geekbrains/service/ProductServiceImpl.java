@@ -41,10 +41,41 @@ public class ProductServiceImpl implements ProductService {
     public Optional<ProductRepr> findById(Long id) {
         return productRepository.findById(id).map(ProductRepr::new);
     }
-    //    public ProductRepr findById(Long id) {
+//        public ProductRepr findById(Long id) {
 //        return new ProductRepr(productRepository.findById(id).get());
 //    }
 
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void save(ProductRepr productRepr) throws IOException {
+        Product product = (productRepr.getId() != null) ? productRepository.findById(productRepr.getId()).get()
+                : new Product();
+        product.setName(productRepr.getName());
+        product.setCategory(productRepr.getCategory());
+        product.setBrand(productRepr.getBrand());
+        product.setPrice(productRepr.getPrice());
+        if (productRepr.getNewPictures() != null) {
+            for (MultipartFile newPicture : productRepr.getNewPictures()) {
+                logger.info("Product {} file {} size {}", product.getId(),
+                        newPicture.getOriginalFilename(), newPicture.getSize());
+
+                if (product.getPictures() == null) {
+                    product.setPictures(new ArrayList<>());
+                }
+                product.getPictures().add(new Picture(newPicture.getOriginalFilename(),
+                        newPicture.getContentType(), new PictureData(newPicture.getBytes())));
+            }
+        }
+        productRepository.save(product);
+    }
+
+    @Override
     public List<List<ProductRepr>> findAllAndSplitProductsBy(int groupSize) {
         List<List<ProductRepr>> result = new ArrayList<>();
         List<ProductRepr> subList = new ArrayList<>();
@@ -60,35 +91,4 @@ public class ProductServiceImpl implements ProductService {
         }
         return result;
     }
-
-    @Override
-    @Transactional
-    public void deleteById(Long id) {
-        productRepository.deleteById(id);
-    }
-
-//    @Override
-//    @Transactional
-//    public void save(ProductRepr productRepr) throws IOException {
-//        Product product = (productRepr.getId() != null) ? productRepository.findById(productRepr.getId()).get()
-//                : new Product();
-//        product.setName(productRepr.getName());
-//        product.setCategories(productRepr.getCategories());
-//        product.setBrand(productRepr.getBrand());
-//        product.setPrice(productRepr.getPrice());
-//        if (productRepr.getNewPictures() != null) {
-//            for (MultipartFile newPicture : productRepr.getNewPictures()) {
-//                logger.info("Product {} file {} size {}", product.getId(),
-//                        newPicture.getOriginalFilename(), newPicture.getSize());
-//
-//                if (product.getPictures() == null) {
-//                    product.setPictures(new ArrayList<>());
-//                }
-//
-//                product.getPictures().add(new Picture(newPicture.getOriginalFilename(),
-//                        newPicture.getContentType(), new PictureData(newPicture.getBytes())));
-//            }
-//        }
-//        productRepository.save(product);
-//    }
 }

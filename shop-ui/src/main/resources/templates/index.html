@@ -97,7 +97,7 @@
 									<div class="products-slick" data-nav="#slick-nav-1">
 
 										<th:block th:each="prod : ${products}">
-											<div th:replace="fragments/product.html :: product (${prod.id}, ${prod.pictures[0].id}, ${prod.name}, ${prod.categoriesAsString}, ${prod.price}, ${prod.price}, 5)"></div>
+											<div th:replace="fragments/product.html :: product (${prod.id}, ${prod.pictureIds[0].id}, ${prod.name}, ${prod.categoriesAsString}, ${prod.price}, ${prod.price}, 5)"></div>
 										</th:block>
 
 									</div>
@@ -193,7 +193,7 @@
 									<div class="products-slick" data-nav="#slick-nav-2">
 
 										<th:block th:each="prod : ${products}">
-											<div th:replace="fragments/product.html :: product (${prod.id}, ${prod.pictures[0].id}, ${prod.name}, ${prod.categoriesAsString}, ${prod.price}, ${prod.price}, 5)"></div>
+											<div th:replace="fragments/product.html :: product (${prod.id}, ${prod.pictureIds[0].id}, ${prod.name}, ${prod.categoriesAsString}, ${prod.price}, ${prod.price}, 5)"></div>
 										</th:block>
 									</div>
 									<div id="slick-nav-2" class="products-slick-nav"></div>

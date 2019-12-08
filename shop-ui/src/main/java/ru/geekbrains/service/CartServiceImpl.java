@@ -1,6 +1,8 @@
 package ru.geekbrains.service;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -25,19 +28,28 @@ public class CartServiceImpl implements CartService {
 
     private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 
-    private final ProductService productService;
+//    private final ProductService productService;
 
     private Map<LineItem, Integer> lineItems;
 
-    @Autowired
-    public CartServiceImpl(ProductService productService) {
-        this.productService = productService;
-        this.lineItems = new HashMap<>();
-    }
+//    @Autowired
+//    public CartServiceImpl(ProductService productService) {
+//        this.productService = productService;
+//        this.lineItems = new HashMap<>();
+//    }
 
     @PostConstruct
     public void post() {
         logger.info("Session bean post construct");
+    }
+
+    public CartServiceImpl() {
+        this.lineItems = new HashMap<>();
+    }
+
+    @JsonCreator
+    public CartServiceImpl(@JsonProperty("lineItems") List<LineItem> lineItems) {
+        this.lineItems = lineItems.stream().collect(Collectors.toMap(li -> li, LineItem::getQty));
     }
 
     @Override
@@ -79,10 +91,10 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void updateCart(LineItem lineItem) {
-        if (lineItem.getProductRepr() == null) {
-            lineItem.setProductRepr(productService.findById(lineItem.getProductId())
-                    .orElseThrow(IllegalArgumentException::new));
-        }
+//        if (lineItem.getProductRepr() == null) {
+//            lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+//                    .orElseThrow(IllegalArgumentException::new));
+//        }
         lineItems.put(lineItem, lineItem.getQty());
     }
 }

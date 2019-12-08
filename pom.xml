@@ -22,6 +22,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
     </properties>
 
     <groupId>ru.geekbrains.spring2</groupId>

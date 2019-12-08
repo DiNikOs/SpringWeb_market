@@ -1,7 +1,8 @@
 package ru.geekbrains.controllers.repr;
 
-import ru.geekbrains.persist.model.Role;
-import ru.geekbrains.persist.model.User;
+//import ru.geekbrains.persist.model.Role;
+//import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.*;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
@@ -34,6 +35,7 @@ public class UserRepr {
         this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.matchingPassword = user.getPassword();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();

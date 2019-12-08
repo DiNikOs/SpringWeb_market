@@ -5,7 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/geek-jewellery-shop.iml" filepath="$PROJECT_DIR$/geek-jewellery-shop.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-admin-ui/shop-admin-ui.iml" filepath="$PROJECT_DIR$/shop-admin-ui/shop-admin-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-database/shop-database.iml" filepath="$PROJECT_DIR$/shop-database/shop-database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-eureka/shop-eureka.iml" filepath="$PROJECT_DIR$/shop-eureka/shop-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-ui/shop-ui.iml" filepath="$PROJECT_DIR$/shop-ui/shop-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-zuul-proxy/shop-zuul-proxy.iml" filepath="$PROJECT_DIR$/shop-zuul-proxy/shop-zuul-proxy.iml" />
     </modules>
   </component>
 </project>
