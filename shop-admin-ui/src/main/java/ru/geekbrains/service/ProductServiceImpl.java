@@ -67,7 +67,6 @@ public class ProductServiceImpl implements ProductService, Serializable {
                 if (product.getPictures() == null) {
                     product.setPictures(new ArrayList<>());
                 }
-
                 product.getPictures().add(new Picture(newPicture.getOriginalFilename(),
                         newPicture.getContentType(), new PictureData(newPicture.getBytes())));
             }

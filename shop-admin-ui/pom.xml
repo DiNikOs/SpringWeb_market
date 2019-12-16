@@ -14,9 +14,10 @@
     <name>shop-admin-ui</name>
     <description>UI admin module</description>
 
-    <!--<properties>-->
-        <!--<spring.profiles.active>local,no-liquibase</spring.profiles.active>-->
-    <!--</properties>-->
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -40,6 +41,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>ru.geekbrains.spring2</groupId>
@@ -47,11 +56,6 @@
             <version>1.0-SNAPSHOT</version>
             <!--<version>0.0.1-SNAPSHOT</version>-->
             <!--<scope>compile</scope>-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
@@ -95,16 +99,31 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
                 <executions>
+                    <!--<execution>-->
+                        <!--<id>default</id>-->
+                        <!--<goals>-->
+                            <!--<goal>build</goal>-->
+                            <!--<goal>push</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
                     <execution>
-                        <id>default</id>
+                        <id>Build docker container</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Push docker container</id>
+                        <phase>deploy</phase>
+                        <goals>
                             <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
+
                 <configuration>
-                    <repository>registry.heroku.com/${project.artifactId}/web</repository>
+                    <repository>registry.heroku.com/g15-${project.artifactId}/web</repository>
                     <tag>latest</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
