@@ -29,5 +29,17 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="postgres@localhost" uuid="5ba283bd-4a22-49cc-90bc-be9597cef6ba">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="g15-admin" uuid="56fc5432-8620-442a-bc16-3698c4ebb362">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-107-21-209-1.compute-1.amazonaws.com:5432/dblcjgbkqqroud</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -99,30 +99,18 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
                 <executions>
-                    <!--<execution>-->
-                        <!--<id>default</id>-->
-                        <!--<goals>-->
-                            <!--<goal>build</goal>-->
-                            <!--<goal>push</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
                     <execution>
-                        <id>Build docker container</id>
-                        <phase>package</phase>
+                        <id>default</id>
                         <goals>
                             <goal>build</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>Push docker container</id>
-                        <phase>deploy</phase>
-                        <goals>
                             <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
-
                 <configuration>
+                    <username>docker121219</username>
+                    <password>docker#$12_Mon!</password>
+                    <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
                     <repository>registry.heroku.com/g15-${project.artifactId}/web</repository>
                     <tag>latest</tag>
                     <buildArgs>

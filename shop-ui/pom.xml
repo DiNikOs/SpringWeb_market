@@ -168,7 +168,10 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>registry.heroku.com/${project.artifactId}/web</repository>
+                    <username>docker121219</username>
+                    <password>docker#$12_Mon!</password>
+                    <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
+                    <repository>registry.heroku.com/g15-${project.artifactId}/web</repository>
                     <tag>latest</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
