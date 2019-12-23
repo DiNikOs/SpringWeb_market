@@ -13,6 +13,7 @@ import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.service.model.LineItem;
 
 import javax.annotation.PostConstruct;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,8 +22,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-@Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class CartServiceImpl implements CartService {
+//@Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class CartServiceImpl implements CartService, Serializable {
 
     private static final long serialVersionUID = -9025621122549454991L;
 

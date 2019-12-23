@@ -16,7 +16,7 @@ public class PictureData implements Serializable {
     private Long id;
 
     @Lob
-    @Type(type="org.hibernate.type.BinaryType") // для правильной работы PostgreSQL
+//    @Type(type="org.hibernate.type.BinaryType") // для правильной работы PostgreSQL
     @Column(name = "data", nullable = false, length = 33554430) // для правильной hibernate-валидации в MySQL
     private byte[] data;
 

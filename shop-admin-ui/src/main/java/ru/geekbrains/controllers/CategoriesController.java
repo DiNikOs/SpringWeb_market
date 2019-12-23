@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.persist.model.Category;
-import ru.geekbrains.persist.repo.CategoryRepository;
+import ru.geekbrains.persist.repo.PRepository;
 
 
 @Controller
@@ -18,10 +18,10 @@ public class CategoriesController {
 
     private static final Logger logger = LoggerFactory.getLogger(CategoriesController.class);
 
-    private final CategoryRepository categoryRepository;
+    private final PRepository categoryRepository;
 
     @Autowired
-    public CategoriesController(CategoryRepository categoryRepository) {
+    public CategoriesController(PRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
