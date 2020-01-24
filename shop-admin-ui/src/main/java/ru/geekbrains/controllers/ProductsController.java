@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.persist.repo.BrandRepository;
-import ru.geekbrains.persist.repo.PRepository;
+import ru.geekbrains.persist.repo.CategoryRepository;
 import ru.geekbrains.service.ProductService;
 
 
@@ -22,12 +22,12 @@ public class ProductsController {
 
     private final ProductService productService;
 
-    private final PRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     private final BrandRepository brandRepository;
 
     @Autowired
-    public ProductsController(ProductService productService, PRepository categoryRepository,
+    public ProductsController(ProductService productService,  CategoryRepository categoryRepository,
                               BrandRepository brandRepository) {
         this.productService = productService;
         this.categoryRepository = categoryRepository;
