@@ -8,14 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="shop-admin-ui" />
         <module name="shop-database" />
-        <module name="shop-eureka" />
         <module name="shop-ui" />
-        <module name="shop-zuul-proxy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="geek-jewellery-shop" target="1.8" />
-      <module name="shop-admin-ui" target="1.8" />
+      <module name="shop-admin-ui" target="8" />
       <module name="shop-database" target="1.8" />
       <module name="shop-eureka" target="1.8" />
       <module name="shop-ui" target="1.8" />

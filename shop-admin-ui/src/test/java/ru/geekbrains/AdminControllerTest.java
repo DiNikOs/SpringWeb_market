@@ -26,14 +26,6 @@ public class AdminControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrlTemplate("http://localhost/login"));
     }
-
-//    @WithMockUser(value = "admin", password = "admin", roles = {"ADMIN"})
-//    @Test
-//    public void testAdminPageWithLogin() throws Exception {
-//        mvc.perform(get("/").contentType(MediaType.TEXT_HTML))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("index"));
-//    }
     @WithMockUser(value = "admin0", password = "123", roles = {"ADMIN"})
     @Test
     public void testAdminPageWithLogin() throws Exception {

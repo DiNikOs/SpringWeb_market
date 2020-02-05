@@ -4,8 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/shop-zuul-proxy/pom.xml" />
-        <option value="$PROJECT_DIR$/shop-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/shop-ui/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,5 +1,6 @@
 package ru.geekbrains;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +14,7 @@ import ru.geekbrains.persist.model.Brand;
 import ru.geekbrains.persist.model.Category;
 import ru.geekbrains.persist.model.Product;
 import ru.geekbrains.persist.repo.BrandRepository;
+import ru.geekbrains.persist.repo.CategoryRepository;
 import ru.geekbrains.persist.repo.ProductRepository;
 
 import java.math.BigDecimal;
@@ -36,21 +38,29 @@ public class ProductControllerTest {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @WithMockUser(value = "admin0", password = "123", roles = {"ADMIN"})
     @Test
-    public void testBrandPostRequest() throws Exception {
-        mvc.perform(post("/category")
+    @Disabled
+    public void testProductPostRequest() throws Exception {
+        mvc.perform(post("/product")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("id", "-1")
+                .param("id", "1")
                 .param("name", "New Product")
-                .param("proice", String.valueOf(BigDecimal.valueOf(900)))
+                .param("price", String.valueOf(BigDecimal.valueOf(900)))
+                .param("category.name", "New Category")
                 .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/products"));
+                .andExpect(view().name("redirect:/product/1/edit"));
 
         Product product = new Product();
         product.setName("New Product");
         product.setPrice(BigDecimal.valueOf(900));
+        Category category = new Category();
+        category.setName("New Category");
+        product.setCategory(category);
 
         Optional<Product> savedProduct = productRepository.findOne(Example.of(product));
 
