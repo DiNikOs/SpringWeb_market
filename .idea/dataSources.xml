@@ -41,11 +41,5 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-107-21-209-1.compute-1.amazonaws.com:5432/dblcjgbkqqroud</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="postgres@localhost [2]" uuid="d0a1cd37-58d7-492d-8c0c-c68b26d76809">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
-    </data-source>
   </component>
 </project>
